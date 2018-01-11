@@ -44,17 +44,10 @@ body::before {
 .cell {
     border: 1px solid #fff;
     flex: 1;
-}
-
-.cell:hover {
-    color: #202020;
-    cursor: pointer;
-    font-family: "Arial";
+	color: #202020;
+	cursor: pointer;
+	font-family: "Arial";
     font-size: 112px;
-}
-
-.cell:hover::after {
-    content: "X"
 }
 
 .cell:first-child {

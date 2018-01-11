@@ -36,6 +36,10 @@ class TictactoeCell {
 	}
 	
 	onClick () {
-		alert ("Yay");
+		if (!this.isTaken()) {
+			this.setOwned('x');
+			this.DOMelement.innerHTML = "X";
+			this.DOMelement.style.cursor = "default";
+		}
 	}
 }
