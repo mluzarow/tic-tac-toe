@@ -11,6 +11,19 @@ class TictactoeController {
 				this.cells[i][k] = new TictactoeCell (row[k]);
 			}
 		}
+		
+		// Set move vars
+		this.currentMove = 1;
+		this.PLAYER_TURN = 1;
+		this.COMPUTER_TURN = -1;
+	}
+	
+	static toggleTurn () {
+		this.currentMove *= -1;
+	}
+	
+	static currentTurn () {
+		return (this.currentMove);
 	}
 }
 
@@ -36,10 +49,14 @@ class TictactoeCell {
 	}
 	
 	onClick () {
-		if (!this.isTaken()) {
+		if (
+			!this.isTaken() &&
+			TictactoeController.currentTurn () === TictactoeController.PLAYER_TURN
+		) {
 			this.setOwned('x');
 			this.DOMelement.innerHTML = "X";
 			this.DOMelement.style.cursor = "default";
+			TictactoeController.toggleTurn ();
 		}
 	}
 }
