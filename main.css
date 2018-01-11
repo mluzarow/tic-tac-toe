@@ -1,0 +1,66 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #000;
+    text-align: center;
+}
+
+body::before {
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    content: '';
+    vertical-align: middle;
+}
+
+#board-wrap {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#board {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex: 1;
+}
+
+.row:first-child .cell {
+    border-top: none;
+}
+
+.row:last-child .cell {
+    border-bottom: none;
+}
+
+.cell {
+    border: 1px solid #fff;
+    flex: 1;
+}
+
+.cell:hover {
+    color: #202020;
+    cursor: pointer;
+    font-family: "Arial";
+    font-size: 112px;
+}
+
+.cell:hover::after {
+    content: "X"
+}
+
+.cell:first-child {
+    border-left: none;
+}
+
+.cell:last-child {
+    border-right: none;
+}
