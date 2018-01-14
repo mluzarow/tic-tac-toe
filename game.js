@@ -24,15 +24,15 @@ class TictactoeController {
 	}
 	
 	static reset () {
-		var masl = 1;
 		for (var i = 0; i < 3; i++) {
 			for (var k = 0; k < 3; k++) {
-				this.cells[i][k] = new TictactoeCell (row[k], mask);
-				mask <<= 1;
+				this.cells[i][k].reset ();
 			}
 		}
 		
 		this.currentMove = true;
+		this.playerCells = 0;
+		this.aiCells = 0;
 	}
 	
 	static toggleTurn () {
@@ -49,16 +49,16 @@ class TictactoeController {
 		// Check for win
 		if (
 			// Rows
-			(moves && 7) === 7 ||      // 000 000 111
-			(moves && 56) === 56 ||    // 000 111 000
-			(moves && 448) === 448 ||  // 111 000 000
+			(moves & 7) === 7 ||      // 000 000 111
+			(moves & 56) === 56 ||    // 000 111 000
+			(moves & 448) === 448 ||  // 111 000 000
 			// Columns
-			(moves && 292) === 292 || // 100 100 100
-			(moves && 146) === 146 || // 010 010 010
-			(moves && 73) === 73      // 001 001 001
+			(moves & 292) === 292 || // 100 100 100
+			(moves & 146) === 146 || // 010 010 010
+			(moves & 73) === 73 ||   // 001 001 001
 			// Diags
-			(moves && 273) === 273 || // 100 010 001
-			(moves && 84) === 84 ||   // 001 010 100
+			(moves & 273) === 273 || // 100 010 001
+			(moves & 84) === 84      // 001 010 100
 		) {
 			TictactoeController.endGame (playerToCheck === "x" ? 0 : 1);
 		} else if (TictactoeController.turns === 9) {
@@ -78,6 +78,8 @@ class TictactoeController {
 		} else {
 			console.log ("Nobody wins.");
 		}
+		
+		// TictactoeController.reset ();
 	}
 }
 
@@ -110,7 +112,8 @@ class TictactoeCell {
 			this.DOMelement.innerHTML = "X";
 			this.DOMelement.style.cursor = "default";
 			TictactoeController.toggleTurn ();
-			TictactoeController.checkFoWin ("x");
+			TictactoeController.checkForWin ("x");
+			TictactoeController.ai.processTurn ();
 		}
 	}
 	
@@ -119,7 +122,7 @@ class TictactoeCell {
 		TictactoeController.aiCells |= this.mask;
 		this.DOMelement.innerHTML = "O";
 		this.DOMelement.style.cursor = "default";
-		TictactoeController.checkFoWin ("o");
+		TictactoeController.checkForWin ("o");
 		TictactoeController.toggleTurn ();
 	}
 }
@@ -130,21 +133,20 @@ class TicTacToeAI {
 	}
 	
 	processTurn () {
+		var cellsState = TictactoeController.playerCells | TictactoeController.aiCells;
+		var freeCellList = [];
+		
+		for (var i = 0; i < 9; i++) {
+			if ((cellsState & 1) === 0) {
+				freeCellList.push (i);
+			}
+		}
+		
 		if (this.difficulty = 1) {
 			// Easy mode AI; select cell at random
-			var emptyCells = [];
+			var choice = Math.floor(Math.random() * Math.floor(freeCellList.length));
 			
-			for (var i = 0; i < 3; i++) {
-				for (var k = 0; k < 3; k++) {
-					if (!TictactoeController.cells[i][k].isTaken ()) {
-						emptyCells.push (TictactoeController.cells[i][k]);
-					}
-				}
-			}
-			
-			var choice = Math.floor(Math.random() * Math.floor(emptyCells.length));
-			
-			emptyCells[choice].onClickAI ();
+			TictactoeController.cells[Math.floor (choice / 3)][choice % 3].onClickAI ();
 		} else {
 			
 		}
