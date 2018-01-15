@@ -46,6 +46,10 @@ class TictactoeController {
 			var moves = this.aiCells;
 		}
 		
+		// console.log ("Checking for win...");
+		// console.log ("Player: " + playerToCheck);
+		// console.log ("Moves: " + moves.toString(2));
+		
 		// Check for win
 		if (
 			// Rows
@@ -140,8 +144,9 @@ class TicTacToeAI {
 			if ((cellsState & 1) === 0) {
 				freeCellList.push (i);
 			}
+			cellsState >>= 1;
 		}
-		
+		// console.log(freeCellList);
 		if (this.difficulty = 1) {
 			// Easy mode AI; select cell at random
 			var choice = Math.floor(Math.random() * Math.floor(freeCellList.length));
