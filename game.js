@@ -65,9 +65,12 @@ class TictactoeController {
 			(moves & 84) === 84      // 001 010 100
 		) {
 			TictactoeController.endGame (playerToCheck === "x" ? 0 : 1);
+			return (true);
 		} else if (TictactoeController.turns === 9) {
 			TictactoeController.endGame (2);
+			return (true);
 		}
+			return (false);
 	}
 	
 	static isPlayersTurn () {
@@ -111,23 +114,29 @@ class TictactoeCell {
 	
 	onClick () {
 		if (!this.isTaken () && TictactoeController.isPlayersTurn ()) {
+			TictactoeController.turns++;
 			this.setTaken ();
 			TictactoeController.playerCells |= this.mask;
 			this.DOMelement.innerHTML = "X";
 			this.DOMelement.style.cursor = "default";
 			TictactoeController.toggleTurn ();
-			TictactoeController.checkForWin ("x");
-			TictactoeController.ai.processTurn ();
+			var gameOver = TictactoeController.checkForWin ("x");
+			if (!gameOver) {
+				TictactoeController.ai.processTurn ();
+			}
 		}
 	}
 	
 	onClickAI () {
+		TictactoeController.turns++;
 		this.setTaken();
 		TictactoeController.aiCells |= this.mask;
 		this.DOMelement.innerHTML = "O";
 		this.DOMelement.style.cursor = "default";
-		TictactoeController.checkForWin ("o");
-		TictactoeController.toggleTurn ();
+		var gameOver = TictactoeController.checkForWin ("o");
+		if (!gameOver) {
+			TictactoeController.toggleTurn ();
+		}
 	}
 }
 
