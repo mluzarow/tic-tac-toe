@@ -147,7 +147,7 @@ class TicTacToeAI {
 			cellsState >>= 1;
 		}
 		
-		if (this.difficulty = 1) {
+		if (this.difficulty == 1) {
 			// Easy mode AI; select cell at random
 			var choice = Math.floor(Math.random() * Math.floor(freeCellList.length));
 			choice = freeCellList[choice];
