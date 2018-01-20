@@ -18,7 +18,7 @@ class TictactoeController {
 		this.currentMove = true;
 		
 		// Init the AI
-		this.ai = new TicTacToeAI (1);
+		this.ai = new TictactoeAI (1);
 		this.playerCells = 0;
 		this.aiCells = 0;
 	}
@@ -140,7 +140,7 @@ class TictactoeCell {
 	}
 }
 
-class TicTacToeAI {
+class TictactoeAI {
 	constructor (difficulty) {
 		this.difficulty = difficulty;
 	}
