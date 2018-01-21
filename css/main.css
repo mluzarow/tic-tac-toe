@@ -147,9 +147,34 @@ body::before {
 }
 
 #score-status {
+	height: 70px;
 	display: none;
 }
 
+#score-status::before {
+	width: 0;
+	height: 100%;
+	display: inline-block;
+	content: "";
+	vertical-align: middle;
+}
+
 #play-again {
-	
+	width: 70%;
+	height: 80%;
+	border: 1px solid white;
+	background: none;
+	color: white;
+	cursor: pointer;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	vertical-align: middle;
+	font-family: "Arial";
+	font-size: 1.75em;
+}
+
+#play-again:hover {
+	background-color: white;
+	color: black;
 }
