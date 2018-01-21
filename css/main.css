@@ -150,18 +150,6 @@ body::before {
 	display: none;
 }
 
-#victory-text {
-	height: 100px;
-	display: block;
-	color: grey;
-	font-family: "Arial";
-	font-size: 4em;
-}
-
-#game-choices {
-	
-}
-
 #play-again {
 	
 }
