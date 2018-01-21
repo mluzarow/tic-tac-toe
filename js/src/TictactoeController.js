@@ -14,6 +14,8 @@ class TictactoeController {
 			}
 		}
 		
+		Scoreboard.initialize ();
+		
 		// Set move vars
 		this.currentMove = true;
 		
@@ -80,10 +82,13 @@ class TictactoeController {
 	static endGame (s) {
 		if (s === 0) {
 			console.log ("Player wins.");
+			Scoreboard.playerWins ();
 		} else if (s === 1) {
 			console.log ("AI wins.");
+			Scoreboard.computerWins ();
 		} else {
 			console.log ("Nobody wins.");
+			Scoreboard.nobodyWins ();
 		}
 		
 		// TictactoeController.reset ();
