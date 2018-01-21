@@ -64,6 +64,7 @@ class TictactoeController {
 		
 		// Set move vars
 		this.currentMove = true;
+		this.turns = 0;
 		
 		// Init the AI
 		this.ai = new TictactoeAI (1);
@@ -81,6 +82,7 @@ class TictactoeController {
 		this.currentMove = true;
 		this.playerCells = 0;
 		this.aiCells = 0;
+		this.turns = 0;
 	}
 	
 	static toggleTurn () {
@@ -112,10 +114,10 @@ class TictactoeController {
 			(moves & 273) === 273 || // 100 010 001
 			(moves & 84) === 84      // 001 010 100
 		) {
-			TictactoeController.endGame (playerToCheck === "x" ? 0 : 1);
+			this.endGame (playerToCheck === "x" ? 0 : 1);
 			return (true);
-		} else if (TictactoeController.turns === 9) {
-			TictactoeController.endGame (2);
+		} else if (this.turns === 9) {
+			this.endGame (2);
 			return (true);
 		}
 			return (false);
