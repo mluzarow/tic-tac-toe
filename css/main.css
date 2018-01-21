@@ -111,6 +111,23 @@ body::before {
 	flex: 1;
 }
 
+#score-body {
+	width: 100%;
+	height: 300px;
+	display: flex;
+}
+
+#player-scores {
+	height: 300px;
+	border-right: 1px solid white;
+	flex: 1;
+}
+
+#ai-scores {
+	height: 300px;
+	flex: 1;
+}
+
 #score-status {
 	display: none;
 }
