@@ -1,37 +1,56 @@
 <html>
 <head>
-    <meta charset = "UTF-8">
-    
-    <link rel = "stylesheet" type = "text/css" href = "css/main.css">
-    
-    <script type = "text/javascript" src = "js/game.js"></script>
-    
-    <script>
+	<meta charset = "UTF-8">
+	
+	<link rel = "stylesheet" type = "text/css" href = "css/main.css">
+	
+	<script type = "text/javascript" src = "js/game.js"></script>
+	
+	<script>
 		window.onload = function () {
 			// Loader
 			TictactoeController.initialize ();
 		}
-    </script>
+	</script>
 </head>
 <body>
-    <div id = "board-wrap">
-        <div id = "board">
-            <div class = "row">
-                <div class = "cell"></div>
-                <div class = "cell"></div>
-                <div class = "cell"></div>
-            </div>
-            <div class = "row">
-                <div class = "cell"></div>
-                <div class = "cell"></div>
-                <div class = "cell"></div>
-            </div>
-            <div class = "row">
-                <div class = "cell"></div>
-                <div class = "cell"></div>
-                <div class = "cell"></div>
-            </div>
-        </div>
-    </div>
+	<div id = "board-wrap">
+		<div id = "board">
+			<div class = "row">
+				<div class = "cell"></div>
+				<div class = "cell"></div>
+				<div class = "cell"></div>
+			</div>
+			<div class = "row">
+				<div class = "cell"></div>
+				<div class = "cell"></div>
+				<div class = "cell"></div>
+			</div>
+			<div class = "row">
+				<div class = "cell"></div>
+				<div class = "cell"></div>
+				<div class = "cell"></div>
+			</div>
+		</div>
+	</div>
+	<div id = "score-wrap">
+		<div id = "score-top">
+			<div class = "score-card">
+				<span id = "tag-player">Player</span>
+				<span id = "tag-player-score">0</span>
+			</div>
+			<div class = "score-card">
+				<span id = "tag-ai-score">0</span>
+				<span id = "tag-ai">Computer</span>
+			</div>
+		</div>
+		<div id = "score-body">
+			<div id = "player-scores"></div>
+			<div id = "ai-scores"></div>
+		</div>
+		<div id = "score-status">
+			<button id = "play-again">Play again?</button>
+		</div>
+	</div>
 </body>
 </html>

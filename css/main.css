@@ -1,59 +1,180 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #000;
-    text-align: center;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #000;
+	text-align: center;
 }
 
 body::before {
-    width: 0;
-    height: 100%;
-    display: inline-block;
-    content: '';
-    vertical-align: middle;
+	width: 0;
+	height: 100%;
+	display: inline-block;
+	content: '';
+	vertical-align: middle;
 }
 
 #board-wrap {
-    display: inline-block;
-    vertical-align: middle;
+	display: inline-block;
+	vertical-align: middle;
 }
 
 #board {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
+	width: 400px;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
 }
 
 .row {
-    width: 100%;
-    display: flex;
-    flex: 1;
+	width: 100%;
+	display: flex;
+	flex: 1;
 }
 
 .row:first-child .cell {
-    border-top: none;
+	border-top: none;
 }
 
 .row:last-child .cell {
-    border-bottom: none;
+	border-bottom: none;
 }
 
 .cell {
-    border: 1px solid #fff;
-    flex: 1;
+	border: 1px solid #fff;
+	flex: 1;
 	color: #202020;
 	cursor: pointer;
 	font-family: "Arial";
-    font-size: 112px;
+	font-size: 112px;
 }
 
 .cell:first-child {
-    border-left: none;
+	border-left: none;
 }
 
 .cell:last-child {
-    border-right: none;
+	border-right: none;
+}
+
+#score-wrap {
+	padding-left: 25px;
+	width: 400px;
+	height: 400px;
+	display: inline-block;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+#score-top {
+	width: 100%;
+	display: flex;
+	border-bottom: 1px solid white;
+}
+
+.score-card {
+	display: flex;
+	box-sizing: border-box;
+	color: grey;
+	font-family: "Arial";
+	font-size: 1.5em;
+	flex: 1;
+}
+
+.score-card:first-child {
+	padding-right: 10px;
+	border-right: 1px solid white;
+}
+
+.score-card:last-child {
+	padding-left: 10px;
+}
+
+#tag-player {
+	flex: 3;
+	text-align: left;
+}
+
+#tag-player-score {
+	text-align: right;
+	flex: 1;
+}
+
+#tag-ai {
+	flex: 3;
+	text-align: right;
+}
+
+#tag-ai-score {
+	text-align: left;
+	flex: 1;
+}
+
+#score-body {
+	width: 100%;
+	height: 300px;
+	display: flex;
+}
+
+#player-scores {
+	height: 300px;
+	border-right: 1px solid white;
+	flex: 1;
+}
+
+#ai-scores {
+	height: 300px;
+	flex: 1;
+}
+
+.result {
+	display: block;
+	font-family: "Arial";
+	font-size: 1.5em;
+}
+
+.result.win {
+	color: green;
+}
+
+.result.lose {
+	color: red;
+}
+
+.result.tie {
+	color: white;
+}
+
+#score-status {
+	height: 70px;
+	display: none;
+}
+
+#score-status::before {
+	width: 0;
+	height: 100%;
+	display: inline-block;
+	content: "";
+	vertical-align: middle;
+}
+
+#play-again {
+	width: 70%;
+	height: 80%;
+	border: 1px solid white;
+	background: none;
+	color: white;
+	cursor: pointer;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	vertical-align: middle;
+	font-family: "Arial";
+	font-size: 1.75em;
+}
+
+#play-again:hover {
+	background-color: white;
+	color: black;
 }
