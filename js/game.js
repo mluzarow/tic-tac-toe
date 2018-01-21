@@ -9,6 +9,11 @@ class Scoreboard {
 		this.scoreAIElement = document.getElementById ("tag-ai-score");
 		this.scorePlayerHistoryElement = document.getElementById ("player-scores");
 		this.scoreAIHistoryElement = document.getElementById ("ai-scores");
+		this.buttonResetElement = document.getElementById ("score-status");
+		document.getElementById ("play-again").addEventListener (
+			"click",
+			this.onClickResetButton.bind (this)
+		);
 	}
 	
 	static playerWins () {
@@ -16,6 +21,7 @@ class Scoreboard {
 		this.scorePlayerElement.innerHTML = this.scorePlayer;
 		this.scorePlayerHistoryElement.innerHTML += this.TAG_WIN;
 		this.scoreAIHistoryElement.innerHTML += this.TAG_LOSE;
+		this.buttonResetElement.style.display = "block";
 	}
 	
 	static computerWins () {
@@ -23,11 +29,18 @@ class Scoreboard {
 		this.scoreAIElement.innerHTML = this.scoreAI;
 		this.scorePlayerHistoryElement.innerHTML += this.TAG_LOSE;
 		this.scoreAIHistoryElement.innerHTML += this.TAG_WIN;
+		this.buttonResetElement.style.display = "block";
 	}
 	
 	static nobodyWins () {
 		this.scorePlayerHistoryElement.innerHTML += this.TAG_TIE;
 		this.scoreAIHistoryElement.innerHTML += this.TAG_TIE;
+		this.buttonResetElement.style.display = "block";
+	}
+	
+	static onClickResetButton () {
+		this.buttonResetElement.style.display = "none";
+		TictactoeController.reset ();
 	}
 }
 
@@ -123,8 +136,6 @@ class TictactoeController {
 			console.log ("Nobody wins.");
 			Scoreboard.nobodyWins ();
 		}
-		
-		// TictactoeController.reset ();
 	}
 }
 

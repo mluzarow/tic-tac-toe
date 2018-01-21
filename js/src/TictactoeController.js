@@ -90,7 +90,5 @@ class TictactoeController {
 			console.log ("Nobody wins.");
 			Scoreboard.nobodyWins ();
 		}
-		
-		// TictactoeController.reset ();
 	}
 }
