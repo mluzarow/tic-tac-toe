@@ -63,6 +63,7 @@ body::before {
 	width: 400px;
 	height: 400px;
 	display: inline-block;
+	overflow-x: hidden;
 	box-sizing: border-box;
 	vertical-align: middle;
 }
@@ -112,19 +113,26 @@ body::before {
 }
 
 #score-body {
+	position: relative;
+	right: -17px;
 	width: 100%;
-	height: 300px;
+	max-height: 300px;
+	min-height: 300px;
 	display: flex;
+	overflow-y: scroll;
 }
 
 #player-scores {
-	height: 300px;
+	margin-left: -17px;
+	height: 100%;
+	min-height: 300px;
 	border-right: 1px solid white;
 	flex: 1;
 }
 
 #ai-scores {
-	height: 300px;
+	height: 100%;
+	min-height: 300px;
 	flex: 1;
 }
 
